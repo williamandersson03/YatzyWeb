@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <h1>Välkommen till YatzyWeb</h1>
-    <h3>Ett projekt av William Andersson</h3>
+    <h3>Ett projekt av <a href="https://github.com/williamandersson03/YatzyWeb" target="_blank" rel="noopener noreferrer">William Andersson</a></h3>
     <div class="btndiv">
       <button class="btn">LOGGA IN</button>
       <button class="btn">SKAPA KONTO</button>
