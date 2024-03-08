@@ -1,15 +1,22 @@
 <template>
-    <div>{{ answer }}</div>
-  </template>
+    <h1>{{ answer.answer }}</h1>
+    <img :src="answer.image" alt="answer" />
+</template>
   
-  <script>
+  <script lang="ts">
   import axios from "axios";
+  import { defineComponent } from 'vue'
+
+  interface Answer {
+  answer: string;
+  image: string;
+}
   
-  export default {
+  export default  defineComponent({
     name: "App",
     data() {
       return {
-        answer: {},
+        answer: {} as Answer,
       };
     },
     methods: {
@@ -21,5 +28,5 @@
     beforeMount() {
       this.getAnswer();
     },
-  };
+  });
   </script>
