@@ -3,8 +3,8 @@
     <h1>Välkommen till YatzyWeb</h1>
     <h3>Ett projekt av <a href="https://github.com/williamandersson03/YatzyWeb" target="_blank" rel="noopener noreferrer">William Andersson</a></h3>
     <div class="btndiv">
-      <button class="btn">LOGGA IN</button>
-      <button class="btn">SKAPA KONTO</button>
+      <button class="btn"><RouterLink to="/login" class="btntext">LOGGA IN</RouterLink></button>
+      <button class="btn"><RouterLink to="/signup" class="btntext">SKAPA KONTO</RouterLink></button>
     </div>
   </div>
 </template>
@@ -51,12 +51,25 @@
     color: white;
     border-radius: 0.5rem;
     border: none;
+    .btntext{
+      color: white;
+    }
   }
 .btn:hover {
   background: rgb(1, 134, 90);
-  color: black;
+  .btntext{
+      color: black;
+    }
 }
 .btn:active {
   background: rgb(1, 70, 47);
 }
+.btntext {
+  color: white;
+  text-decoration: none;
+  padding: 0%;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+  
 </style>
