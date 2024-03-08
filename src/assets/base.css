@@ -21,7 +21,7 @@
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 }
 
-/* semantic color variables for this project */
+/* semantic color variables for this project
 :root {
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
@@ -48,6 +48,19 @@
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
   }
+}
+*/
+
+:root {
+  --color-background: var(--vt-c-black);
+  --color-background-soft: var(--vt-c-black-soft);
+  --color-background-mute: var(--vt-c-black-mute);
+
+  --color-border: var(--vt-c-divider-dark-2);
+  --color-border-hover: var(--vt-c-divider-dark-1);
+
+  --color-heading: var(--vt-c-text-dark-1);
+  --color-text: var(--vt-c-text-dark-2);
 }
 
 *,
@@ -126,7 +139,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   opacity: 0.8;
-  background-image:  linear-gradient(#202020 1px, transparent 1px), linear-gradient(to right, #202020 1px, var(--color-background) 1px);
+  background-image:  linear-gradient(var(--vt-c-divider-dark-2) 1px, transparent 1px), linear-gradient(to right, var(--vt-c-divider-dark-2) 1px, var(--color-background) 1px);
   background-size: 50px 50px;
 
   -webkit-animation: bg-scrolling-reverse 0.92s infinite;
