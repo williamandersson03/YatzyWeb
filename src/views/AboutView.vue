@@ -1,7 +1,7 @@
 <template>
   <div class="header">
-    <h1>{{ answer.answer }}</h1>
     <img :src="answer.image" alt="answer" />
+    <h1>{{ answer.answer }}</h1>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-      <h1>LOGGA IN</h1>
+      <h1>SKAPA KONTO</h1>
       <h3>Under uppbyggnad</h3>
     </div>
   </template>
