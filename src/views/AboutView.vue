@@ -1,36 +1,41 @@
 <template>
   <div class="header">
-    <img :src="answer.image" alt="answer" />
-    <h1>{{ answer.answer }}</h1>
+    <img :src="answer.image" alt="answer" class="image" />
+    <h1 class="text">{{ answer.answer }}</h1>
   </div>
 </template>
 
 <script lang="ts">
-  import axios from "axios";
-  import { defineComponent } from 'vue'
+import axios from "axios";
+import { defineComponent } from 'vue'
 
-  interface Answer {
+interface Answer {
   answer: string;
   image: string;
 }
-  
-  export default  defineComponent({
-    name: "App",
-    data() {
-      return {
-        answer: {} as Answer,
-      };
+
+export default defineComponent({
+  name: "App",
+  data() {
+    return {
+      answer: {} as Answer,
+    };
+  },
+  methods: {
+    async getAnswer() {
+      const forceAnswer = 'maybe'; 
+      const { data } = await axios.get(`https://yesno.wtf/api`, {
+        params: {
+          force: forceAnswer
+        }
+      });
+      this.answer = data;
     },
-    methods: {
-      async getAnswer() {
-        const { data } = await axios.get("https://yesno.wtf/api");
-        this.answer = data;
-      },
-    },
-    beforeMount() {
-      this.getAnswer();
-    },
-  });
+  },
+  beforeMount() {
+    this.getAnswer();
+  },
+});
 </script>
 
 <style scoped>
@@ -43,6 +48,13 @@
     align-items: center;
     margin-top: 0.5rem;
   }
+  .image {
+    width: 200px; /* Adjust the size as per your requirement */
+    height: 200px; /* Adjust the size as per your requirement */
+  }
+  .text {
+    text-align: center;
+  }
 }
 @media (min-width: 1024px) {
   .header {
@@ -51,6 +63,13 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+  }
+  .image {
+    width: 300px; /* Adjust the size as per your requirement */
+    height: 300px; /* Adjust the size as per your requirement */
+  }
+  .text {
+    text-align: center;
   }
 }
 </style>
