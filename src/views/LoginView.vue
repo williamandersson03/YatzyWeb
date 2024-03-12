@@ -9,11 +9,10 @@ export default {
       const target = event.target as HTMLFormElement;
       const username = target.username.value;
       const password = target.password.value;
-      const hashedPassword = CryptoJS.AES.encrypt(password, password).toString();
 
       axios.post('/api/login', {
         username,
-        password: hashedPassword
+        password
       })
       .then(response => {
         // Hantera lyckad inloggning
