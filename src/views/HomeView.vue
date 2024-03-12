@@ -1,6 +1,7 @@
 <template>
   <div class="header">
     <h1>Välkommen till YatzyWeb</h1>
+    <br>
     <h3>Ett projekt av <a href="https://github.com/williamandersson03/YatzyWeb" target="_blank" rel="noopener noreferrer">William Andersson</a></h3>
     <div class="btndiv">
       <button class="btn" @click="$router.push('login')">LOGGA IN</button>

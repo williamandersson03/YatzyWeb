@@ -4,10 +4,11 @@ import CryptoJS from 'crypto-js';
 
 export default {
   methods: {
-    handleSubmit(event) {
+    handleSubmit(event: Event) {
       event.preventDefault();
-      const username = event.target.username.value;
-      const password = event.target.password.value;
+      const target = event.target as HTMLFormElement;
+      const username = target.username.value;
+      const password = target.password.value;
       const hashedPassword = CryptoJS.AES.encrypt(password, password).toString();
 
       axios.post('/api/login', {
@@ -50,7 +51,9 @@ export default {
 }
 @media (min-width: 1024px) {
   /* Add your styles for larger screens here */
-  .login-form {
+}
+
+.login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,5 +91,4 @@ export default {
     font-weight: bold;
     cursor: pointer;
   }
-}
 </style>
