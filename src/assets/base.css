@@ -14,6 +14,7 @@
   --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
   --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
   --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+  --vt-c-divider-dark-3: rgba(54, 54, 54, 0.48);
 
   --vt-c-text-light-1: var(--vt-c-indigo);
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
@@ -139,7 +140,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   opacity: 0.8;
-  background-image:  linear-gradient(var(--vt-c-divider-dark-2) 1px, transparent 1px), linear-gradient(to right, var(--vt-c-divider-dark-2) 1px, var(--color-background) 1px);
+  background-image:  linear-gradient(var(--vt-c-divider-dark-3) 1px, transparent 1px), linear-gradient(to right, var(--vt-c-divider-dark-3) 1px, var(--color-background) 1px);
   background-size: 50px 50px;
 
   -webkit-animation: bg-scrolling-reverse 0.92s infinite;
