@@ -33,24 +33,4 @@
     padding-top: 1.5rem;
   }
 }
-
-.btn {
-    padding: 1rem;
-    margin: 0.5rem;
-    background: hsla(160, 100%, 37%, 1);
-    color: white;
-    border-radius: 0.5rem;
-    border: none;
-    font-weight: bold;
-    font-size: 1rem;
-  }
-.btn:hover {
-  background: rgb(1, 134, 90);
-  .btntext{
-      color: black;
-    }
-}
-.btn:active {
-  background: rgb(1, 70, 47);
-}
 </style>

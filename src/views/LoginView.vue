@@ -1,17 +1,92 @@
+<script lang="ts">
+import axios from 'axios';
+import CryptoJS from 'crypto-js';
+
+export default {
+  methods: {
+    handleSubmit(event) {
+      event.preventDefault();
+      const username = event.target.username.value;
+      const password = event.target.password.value;
+      const hashedPassword = CryptoJS.AES.encrypt(password, password).toString();
+
+      axios.post('/api/login', {
+        username,
+        password: hashedPassword
+      })
+      .then(response => {
+        // Hantera lyckad inloggning
+      })
+      .catch(error => {
+        // Hantera inloggningsfel
+      });
+    }
+  }
+}
+</script>
 <template>
-    <div class="header">
-      <h1>LOGGA IN</h1>
-      <img src="https://yesno.wtf/assets/no/30-d37eee83c3c2180de4edb7da6fa9f5b7.gif" alt="answer" />
+  <div class="header">
+    <div class="login-form">
+      <form @submit="handleSubmit">
+        <h1>LOGGA IN</h1>
+        <div class="form-group">
+          <label for="username">Användarnamn:</label>
+          <input type="text" id="username" name="username" />
+        </div>
+        <div class="form-group">
+          <label for="password">Lösenord:</label>
+          <input type="password" id="password" name="password" />
+        </div>
+        <button type="submit" class="btn">Logga In</button>
+      </form>
     </div>
-  </template>
-  
+  </div>
+</template>
+
 <style scoped>
 @import '../assets/defaultviewstyle.css';
-@media (max-width: 1023px)
-{
+@media (max-width: 1023px) {
+  /* Add your styles for smaller screens here */
 }
-@media (min-width: 1024px)
-{
+@media (min-width: 1024px) {
+  /* Add your styles for larger screens here */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+    background-color: var(--color-background);
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 3px;
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
 }
 </style>
-  
