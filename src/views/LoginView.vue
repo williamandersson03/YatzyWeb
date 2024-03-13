@@ -41,16 +41,16 @@ export default {
         </div>
         <div class="form-group">
           <label for="username">Användarnamn:</label>
-          <input type="text" id="username" name="username" />
+          <input type="text" id="username" name="username" required />
         </div>
         <div class="form-group">
           <label for="password">Lösenord:</label>
-          <input type="password" id="password" name="password" />
+          <input type="password" id="password" name="password" required />
         </div>
         <button type="submit" class="btn">Logga In</button>
       </form>
       <br>
-      <RouterLink to="/about">Hur hanteras min data?</RouterLink>
+      <RouterLink to="/datainfo">Hur hanteras min data?</RouterLink>
     </div>
   </div>
 </template>
