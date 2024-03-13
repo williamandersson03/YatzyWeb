@@ -20,10 +20,6 @@ export default {
         this.signupResult = response.data;
         this.signupMessage = this.signupResult.includes('successful') ? 'signupMessageSuccess' : 'signupMessageError';
 
-        this.username = '';
-        this.password = '';
-        this.email = '';
-
       } catch (error: any) {
         this.signupResult = error.message;
         this.signupMessage = 'signupMessageError';
