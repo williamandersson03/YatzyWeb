@@ -17,7 +17,7 @@ export default {
 
         this.loginResult = response.data;
         this.loginMessage = this.loginResult.includes('successful') ? 'loginMessageSuccess' : 'loginMessageError';
-      } catch (error) {
+      } catch (error: any) {
         this.loginResult = error.message;
         this.loginMessage = 'loginMessageError';
       }
