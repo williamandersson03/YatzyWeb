@@ -1,6 +1,5 @@
 <script lang="ts">
 import axios from 'axios';
-import CryptoJS from 'crypto-js';
 
 export default {
   methods: {
@@ -16,9 +15,11 @@ export default {
       })
       .then(response => {
         // Hantera lyckad inloggning
+        console.log(response);
       })
       .catch(error => {
         // Hantera inloggningsfel
+        console.log(error);
       });
     }
   }
