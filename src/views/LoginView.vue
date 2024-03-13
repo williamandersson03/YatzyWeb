@@ -17,6 +17,10 @@ export default {
 
         this.loginResult = response.data;
         this.loginMessage = this.loginResult.includes('successful') ? 'loginMessageSuccess' : 'loginMessageError';
+
+        this.username = '';
+        this.password = '';
+
       } catch (error: any) {
         this.loginResult = error.message;
         this.loginMessage = 'loginMessageError';
@@ -47,7 +51,7 @@ export default {
           <label for="password">Lösenord:</label>
           <input type="password" id="password" name="password" required />
         </div>
-        <button type="submit" class="btn">Logga In</button>
+        <button type="submit" class="btn">LOGGA IN</button>
       </form>
       <br>
       <RouterLink to="/datainfo">Hur hanteras min data?</RouterLink>
