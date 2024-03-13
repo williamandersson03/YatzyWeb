@@ -4,7 +4,7 @@
 			"path": "."
 		},
 		{
-			"path": "../YatzyWebServer"
+			"path": "../yatzy-web-server"
 		}
 	],
 	"settings": {}
