@@ -3,24 +3,30 @@ import axios from 'axios';
 
 export default {
   methods: {
-    handleSubmit(event: Event) {
-      event.preventDefault();
-      const target = event.target as HTMLFormElement;
-      const username = target.username.value;
-      const password = target.password.value;
+    async handleSubmit(event: Event) {
+      try {
+        event.preventDefault();
+        const target = event.target as HTMLFormElement;
+        const username = target.username.value;
+        const password = target.password.value;
 
-      axios.post('/api/login', {
-        username,
-        password
-      })
-      .then(response => {
-        // Hantera lyckad inloggning
-        console.log(response);
-      })
-      .catch(error => {
-        // Hantera inloggningsfel
-        console.log(error);
-      });
+        const response = await axios.post('http://localhost:3000/api/login', {
+          username,
+          password
+        });
+
+        this.loginResult = response.data;
+        this.loginMessage = this.loginResult.includes('successful') ? 'loginMessageSuccess' : 'loginMessageError';
+      } catch (error) {
+        this.loginResult = error.message;
+        this.loginMessage = 'loginMessageError';
+      }
+    }
+  },
+  data() {
+    return {
+      loginResult: '',
+      loginMessage: ''
     }
   }
 }
@@ -30,6 +36,9 @@ export default {
     <div class="login-form">
       <form @submit="handleSubmit">
         <h1>LOGGA IN</h1>
+        <div class="loginMessageDiv" :class="loginMessage" v-if="loginResult">
+          <h3>{{ loginResult }}</h3>
+        </div>
         <div class="form-group">
           <label for="username">Användarnamn:</label>
           <input type="text" id="username" name="username" />
@@ -40,6 +49,8 @@ export default {
         </div>
         <button type="submit" class="btn">Logga In</button>
       </form>
+      <br>
+      <RouterLink to="/about">Hur hanteras min data?</RouterLink>
     </div>
   </div>
 </template>
@@ -51,6 +62,25 @@ export default {
 }
 @media (min-width: 1024px) {
   /* Add your styles for larger screens here */
+}
+
+.loginMessageDiv
+{
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.loginMessageSuccess
+{
+  background-color: green;
+}
+
+.loginMessageError
+{
+  background-color: red;
 }
 
 .login-form {
