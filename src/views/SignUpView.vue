@@ -49,7 +49,7 @@ export default {
         </div>
         <div class="form-group">
           <label for="password">Lösenord:</label>
-          <input type="password" id="password" name="password" required />
+          <input type="password" id="password" name="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character (@$!%*?&)" />
         </div>
         <div class="form-group">
           <label for="email">E-post:</label>
