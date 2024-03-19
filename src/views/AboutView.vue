@@ -23,7 +23,7 @@ export default defineComponent({
   },
   methods: {
     async getAnswer() {
-      const forceAnswer = 'maybe'; 
+      const forceAnswer = 'no'; 
       const { data } = await axios.get(`https://yesno.wtf/api`, {
         params: {
           force: forceAnswer

@@ -4,6 +4,7 @@ import AboutView from '@/views/AboutView.vue'
 import LoginView from '@/views/LoginView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import DataInfoView from '@/views/DataInfoView.vue'
+import DeleteMeView from '@/views/DeleteMeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/datainfo',
       name: 'datainfo',
       component: DataInfoView
+    },
+    {
+      path: '/deleteme',
+      name: 'deleteme',
+      component: DeleteMeView
     }
   ]
 })

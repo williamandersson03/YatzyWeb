@@ -10,39 +10,35 @@ export default {
         const username = target.username.value;
         const password = target.password.value;
 
-        const response = await axios.post('http://localhost:3000/api/login', {
+        const response = await axios.post('http://localhost:3000/api/deleteme', {
           username,
           password
         });
 
-        this.loginResult = response.data.message;
-        this.loginMessage = this.loginResult.includes('successful') ? 'loginMessageSuccess' : 'loginMessageError';
-        if(this.loginResult.includes('successful'))
-        {
-          localStorage.setItem('token', response.data.token);
-        }
+        this.deletemeResult = response.data;
+        this.deletemeMessage = this.deletemeResult.includes('successful') ? 'deletemeMessageSuccess' : 'deletemeMessageError';
 
       } catch (error: any) {
-        this.loginResult = error.message;
-        this.loginMessage = 'loginMessageError';
+        this.deletemeResult = error.message;
+        this.deletemeMessage = 'deletemeMessageError';
       }
     }
   },
   data() {
     return {
-      loginResult: '',
-      loginMessage: ''
+      deletemeResult: '',
+      deletemeMessage: ''
     }
   }
 }
 </script>
 <template>
   <div class="header">
-    <div class="login-form">
+    <div class="deleteme-form">
       <form @submit="handleSubmit">
-        <h1>LOGGA IN</h1>
-        <div class="loginMessageDiv" :class="loginMessage" v-if="loginResult">
-          <h3>{{ loginResult }}</h3>
+        <h1>RADERA MIN DATA</h1>
+        <div class="deletemeMessageDiv" :class="deletemeMessage" v-if="deletemeResult">
+          <h3>{{ deletemeResult }}</h3>
         </div>
         <div class="form-group">
           <label for="username">Användarnamn:</label>
@@ -52,7 +48,7 @@ export default {
           <label for="password">Lösenord:</label>
           <input type="password" id="password" name="password" required />
         </div>
-        <button type="submit" class="btn">LOGGA IN</button>
+        <button type="submit" class="btn">RADERA</button>
       </form>
       <br>
       <RouterLink to="/datainfo">Hur hanteras min data?</RouterLink>
@@ -69,7 +65,21 @@ export default {
   /* Add your styles for larger screens here */
 }
 
-.loginMessageDiv
+.btn
+{
+  background: rgb(218, 0, 0);
+}
+.btn:hover {
+background: rgb(160, 1, 1);
+.btntext{
+    color: black;
+  }
+}
+.btn:active {
+background: rgb(100, 0, 0);
+}
+
+.deletemeMessageDiv
 {
   padding: 0.5rem 1rem;
   border-radius: 3px;
@@ -78,17 +88,17 @@ export default {
   text-align: center;
 }
 
-.loginMessageSuccess
+.deletemeMessageSuccess
 {
   background-color: green;
 }
 
-.loginMessageError
+.deletemeMessageError
 {
   background-color: red;
 }
 
-.login-form {
+.deleteme-form {
     display: flex;
     flex-direction: column;
     align-items: center;
