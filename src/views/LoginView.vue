@@ -2,6 +2,32 @@
 import axios from 'axios';
 
 export default {
+  async created() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const response = await axios.get('http://localhost:3000/api/verifytoken', {
+          headers: {
+            Authorization: token
+          }
+        });
+
+        if(response.data == 'VALID')
+        {
+          console.log(response.data.message);
+          this.$router.push('/about');
+        }
+        else
+        {
+          console.log(response.data.message);
+          localStorage.removeItem('token');
+        }
+      } catch (error) {
+        console.log(error);
+        localStorage.removeItem('token');
+      }
+    }
+  },
   methods: {
     async handleSubmit(event: Event) {
       try {
@@ -17,11 +43,10 @@ export default {
 
         this.loginResult = response.data.message;
         this.loginMessage = this.loginResult.includes('successful') ? 'loginMessageSuccess' : 'loginMessageError';
-        if(this.loginResult.includes('successful'))
-        {
+        
+        if(this.loginResult.includes('successful')) {
           localStorage.setItem('token', response.data.token);
         }
-
       } catch (error: any) {
         this.loginResult = error.message;
         this.loginMessage = 'loginMessageError';
@@ -36,6 +61,7 @@ export default {
   }
 }
 </script>
+
 <template>
   <div class="header">
     <div class="login-form">
@@ -62,15 +88,16 @@ export default {
 
 <style scoped>
 @import '../assets/defaultviewstyle.css';
+
 @media (max-width: 1023px) {
   /* Add your styles for smaller screens here */
 }
+
 @media (min-width: 1024px) {
   /* Add your styles for larger screens here */
 }
 
-.loginMessageDiv
-{
+.loginMessageDiv {
   padding: 0.5rem 1rem;
   border-radius: 3px;
   color: white;
@@ -78,52 +105,50 @@ export default {
   text-align: center;
 }
 
-.loginMessageSuccess
-{
+.loginMessageSuccess {
   background-color: green;
 }
 
-.loginMessageError
-{
+.loginMessageError {
   background-color: red;
 }
 
 .login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
-    background-color: var(--color-background);
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-  }
-  
-  label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
-  input[type="text"],
-  input[type="password"] {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 3px;
-    background-color: var(--color-primary);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  background-color: var(--color-background);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 3px;
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
 </style>
